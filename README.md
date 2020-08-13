@@ -1,7 +1,7 @@
 # Laboratorio-1-ARSW
-Integrantes:
-Nicolas Ortega Limas
-German Ospina Quintero
+# Integrantes:
+## Nicolas Ortega Limas
+## German Ospina Quintero
 
 
 In agreement with the lectures, complete the classes CountThread, so that they define the life cycle of a thread that prints the numbers between A and B on the screen.

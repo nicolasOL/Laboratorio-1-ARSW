@@ -27,3 +27,19 @@ Se podría usar la clase ExecutorService que implementa el patrón ThreadPool qu
  ![Texto alternativo](img/Captura4.PNG)
  5. 100 threads
  ![Texto alternativo](img/Captura5.PNG)
+ 
+With the above, and with the given execution times, make a graph of solution time vs. Number of threads. Analyze and hypothesize with your partner for the following questions (you can take into account what was reported by jVisualVM):
+
+![Texto alternativo](img/Grafica.png)
+
+According to Amdahls law, where S(n) is the theoretical improvement of performance, P the parallel fraction of the algorithm, and n the number of threads, the greater n, the better this improvement should be. Why is the best performance not achieved with the 500 threads? How is this performance compared when using 200 ?.
+
+El resultado que se obtuvo con 200 threads fue una ejecucion de 140 segundos comparado al de 500 con 139 segundos, luego se infiere que el rendimiento no se disminuye drasticamente en ninguno de los dos casos, esto ratifica el postulado por Amdahl que establebece que ea mayor cantidad de nucleos mejor sera el desempeño siempre y cuando no se tengan muchas instrucciones seriales o secuenciales.
+
+How does the solution behave using as many processing threads as cores compared to the result of using twice as much?
+
+El resultado obtenido es el mismo aunque internamente vendria a ser una mejor estrategia usar la misma cantidad de threads que de nucleos, ya que al superar su capacidad en hardware se debe recurrir a realizar la ejecucion concurrentemente.
+
+According to the above, if for this problem instead of 100 threads in a single CPU could be used 1 thread in each of 100 hypothetical machines, Amdahls law would apply better ?. If x threads are used instead of 100/x distributed machines (where x is the number of cores of these machines), would it be improved? Explain your answer.
+
+Nuevamente ratificamos la limitación del hardware respecto al rendimiento, infiriendo que a mayor cantidad de nucleos mejor sera el desempeño siempre y cuando estas sean paralelisables, luego en el caso de tener 1 hilo por maquina se estaría dando la ley de Amdahl en su forma física mas precisa.

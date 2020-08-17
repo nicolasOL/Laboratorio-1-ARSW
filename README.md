@@ -14,7 +14,8 @@
 	- Mientras, que al usar el metodo run() solo se ejecutara un hilo, es decir, de 	manera secuencial.
 ### Discusión
 The strategy of parallelism previously implemented is inefficient in certain cases, since the search is still carried out even when the N threads (as a whole) have already found the minimum number of occurrences required to report to the server as malicious. How could the implementation be modified to minimize the number of queries in these cases? What new element would this bring to the problem?      
-Se podría añadir una nueva funcionalidad que tenga como finalidad detener la ejecución de todos los hilos que se esten ejecutando, en el momento y posteriormente, cuando se cumpla la condición. 
+Se podría añadir una nueva funcionalidad que tenga como finalidad detener la ejecución de todos los hilos que se esten ejecutando, en el momento y posteriormente, cuando se cumpla la condición.
+Se podría usar la clase ExecutorService que implementa el patrón ThreadPool que permite operar varias tareas, en hilos independientes, conforme las recibe. Este modelo aumenta el rendimiento y evita la latencia en la ejecución, debido a la creación y destrucción de hilos con pocas tareas.
 ### Performance Evaluation 
  1. A single thread
  ![Texto alternativo](img/Captura1.PNG)

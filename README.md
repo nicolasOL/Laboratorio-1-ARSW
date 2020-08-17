@@ -17,6 +17,7 @@ The strategy of parallelism previously implemented is inefficient in certain cas
 Se podría añadir una nueva funcionalidad que tenga como finalidad detener la ejecución de todos los hilos que se esten ejecutando, en el momento y posteriormente, cuando se cumpla la condición. 
 ### Performance Evaluation 
  1. A single thread
+ ![Texto alternativo](img/Captura1.PNG)
  2. As many threads as processing cores
  3. As many threads as twice the number of processing cores
  4. 50 threads

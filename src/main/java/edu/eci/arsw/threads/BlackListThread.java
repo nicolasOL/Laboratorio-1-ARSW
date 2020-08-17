@@ -1,10 +1,13 @@
 package edu.eci.arsw.threads;
 
+import java.util.LinkedList;
+
 import edu.eci.arsw.spamkeywordsdatasource.HostBlacklistsDataSourceFacade;
 
-public class BlackListThread implements Runnable{
+public class BlackListThread extends Thread{
 	
 	public static int total = 0;
+	public static LinkedList<Integer> blackListOcurrences=new LinkedList<>();
 	
 	private static final int BLACK_LIST_ALARM_COUNT=5;
 		
@@ -25,15 +28,14 @@ public class BlackListThread implements Runnable{
     	this.inicial = inicial;
     }
 	
-	
-	@Override
 	public void run() {
         
-		for (int i=numberT-inicial;i<numberT && ocurrencesCount<BLACK_LIST_ALARM_COUNT;i++){
+		for (int i=numberT;i<=inicial;i++){
             checkedListsCount++;
             
-            if (skds.isInBlackListServer(i, ipaddress)){                
-                ocurrencesCount++;
+            if (skds.isInBlackListServer(i, ipaddress)){  
+                ocurrencesCount+=1;
+                blackListOcurrences.add(i);
             }
         }
 		total+=ocurrencesCount;
@@ -47,6 +49,10 @@ public class BlackListThread implements Runnable{
 
 	public void setOcurrencesCount(int ocurrencesCount) {
 		this.ocurrencesCount = ocurrencesCount;
+	}
+	
+	public LinkedList<Integer> getblackListOcurrences(){
+		return blackListOcurrences;
 	}
 	
 	

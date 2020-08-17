@@ -19,6 +19,10 @@ Se podría añadir una nueva funcionalidad que tenga como finalidad detener la e
  1. A single thread
  ![Texto alternativo](img/Captura1.PNG)
  2. As many threads as processing cores
+ ![Texto alternativo](img/Captura2.PNG)
  3. As many threads as twice the number of processing cores
+ ![Texto alternativo](img/Captura3.PNG)
  4. 50 threads
+ ![Texto alternativo](img/Captura4.PNG)
  5. 100 threads
+ ![Texto alternativo](img/Captura5.PNG)

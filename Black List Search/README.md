@@ -1,5 +1,3 @@
-
-
 ### Introduction to threads in JAVA
  1. In agreement with the lectures, complete the classes CountThread, so that they define the life cycle of a thread that prints the numbers between A and B on the screen.  
  2. Complete the main method of the CountMainThreads class so that:                                                                                         

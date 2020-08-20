@@ -16,22 +16,21 @@ import javax.swing.*;
 /**
  *
  */
-public class Control extends Thread{
-	
+public class Control extends Thread {
+
 	private final static int NTHREADS = 3;
 	private final static int MAXVALUE = 20000000;
 	public final static int TMILISECONDS = 5000;
-	
 
 	private final int NDATA = MAXVALUE / NTHREADS;
 
 	private PrimeFinderThread pft[];
-	
+
 	private boolean detenidos;
 
 	private Control() {
 		super();
-		
+
 		this.pft = new PrimeFinderThread[NTHREADS];
 
 		int i;
@@ -48,37 +47,37 @@ public class Control extends Thread{
 
 	@Override
 	public void run() {
-		//TimerThread tm = new TimerThread();
+		// TimerThread tm = new TimerThread();
 		for (int i = 0; i < NTHREADS; i++) {
 			pft[i].start();
 		}
-		
-		Timer timer = new Timer(TMILISECONDS,new ActionListener() {
-			
+
+		Timer timer = new Timer(TMILISECONDS, new ActionListener() {
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				for (int i=0; i<NTHREADS; i++) {
+				for (int i = 0; i < NTHREADS; i++) {
 					pft[i].detener();
 				}
 				detenidos = true;
-				while(detenidos) {
-					reiniciar();
+				while (detenidos) {
+					Scanner a = new Scanner(System.in);
+					String tecla = a.nextLine();
+					if (tecla.isEmpty()) {
+						detenidos = false;
+						reiniciar();
+					}
 				}
 			}
+
 		});
 		timer.start();
-	}
-	
-	private void reiniciar() {
-		Scanner a = new Scanner(System.in);
-		String tecla = a.nextLine();
-		if(tecla.isEmpty()) {
-			detenidos = false;
-			for(int i=0; i<NTHREADS; i++) {
-				pft[i].notificar();
-			}
-		}
+
 	}
 
-	
+	private void reiniciar() {
+		for (int i = 0; i < NTHREADS; i++) {
+			pft[i].notificar();
+		}
+	}
 }

@@ -40,7 +40,7 @@ public class PrimeFinderThread extends Thread {
 		}
 	}
 
-	public void detener()  {
+	void detener()  {
 		synchronized (this) {
 			p = true;
 			notifyAll();	

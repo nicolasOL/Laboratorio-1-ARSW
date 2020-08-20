@@ -17,6 +17,7 @@ public class Snake extends Observable implements Runnable {
     private Cell start = null;
 
     private boolean snakeEnd = false;
+    private boolean isStopped = false;
 
     private int direction = Direction.NO_DIRECTION;
     private final int INIT_SIZE = 3;
@@ -46,8 +47,17 @@ public class Snake extends Observable implements Runnable {
     }
 
     public void run() {
-        while (!snakeEnd) {
-            
+        while (!snakeEnd ) {
+            synchronized (this) {
+            	while(isStopped) {
+					try {
+						wait();
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+            	}
+			}
             snakeCalc();
 
             //NOTIFY CHANGES TO GUI
@@ -333,6 +343,16 @@ public class Snake extends Observable implements Runnable {
     public boolean isSelected() {
         return isSelected;
     }
+    
+    public synchronized void pause() {
+        isStopped = true;
+        notifyAll();
+    }
+
+    public synchronized void resume() {
+        isStopped = false;
+        notifyAll();
+    }
 
     public void setSelected(boolean isSelected) {
         this.isSelected = isSelected;
@@ -340,6 +360,10 @@ public class Snake extends Observable implements Runnable {
 
     public int getIdt() {
         return idt;
+    }
+    
+    public int getSnakebodyLength() {
+        return snakeBody.size();
     }
 
 }

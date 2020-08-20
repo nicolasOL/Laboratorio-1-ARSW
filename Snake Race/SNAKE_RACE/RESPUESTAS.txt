@@ -1,0 +1,10 @@
+2) Accordingly, and using the game logic, identify and write clearly 
+2.1) Possible race conditions
+2.2) An incorrect or inappropriate use of collections, considering its concurrent handling(For this increase the game speed and execute it multiples times until an error has been raised).
+2.3) Unnecessary use of active waits
+
+El acceso a los objetos de celda se puede dar a la vez, es decir dos serpientes pueden estar solicitando una misma celda, ocasionando que el funcionamiento sea dependiente del timepo de ejecucion de cada hilo.
+
+3)Identify critical regions associated with race conditions, and do something in order to eliminate them.Note that you have to synchronize strictly needed. In the answers document suggest the solution proposed for each item of the point 2. As the same way note that you don´t have to add more race conditions
+
+Se identificaron regiones criticas en el segmento de codigo de la clase snake donde era necesario implementar herramientas Thread safe como la inclusion de un metodo synchronized para los metodos pause y resume.
